@@ -67,6 +67,7 @@ export class ProjectControllerBase {
       select: {
         createdAt: true,
         description: true,
+        dueDate: true,
         id: true,
         name: true,
 
@@ -114,6 +115,7 @@ export class ProjectControllerBase {
       select: {
         createdAt: true,
         description: true,
+        dueDate: true,
         id: true,
         name: true,
 
@@ -156,6 +158,7 @@ export class ProjectControllerBase {
       select: {
         createdAt: true,
         description: true,
+        dueDate: true,
         id: true,
         name: true,
 
@@ -225,6 +228,7 @@ export class ProjectControllerBase {
         select: {
           createdAt: true,
           description: true,
+          dueDate: true,
           id: true,
           name: true,
 
@@ -268,6 +272,7 @@ export class ProjectControllerBase {
         select: {
           createdAt: true,
           description: true,
+          dueDate: true,
           id: true,
           name: true,
 

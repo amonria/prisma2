@@ -4,6 +4,7 @@ import { Task } from "../task/Task";
 export type Project = {
   createdAt: Date;
   description: Date | null;
+  dueDate: Date | null;
   id: string;
   name: string | null;
   owner?: User;

@@ -17,6 +17,7 @@ export const ProjectCreate = (props: CreateProps): React.ReactElement => {
     <Create {...props}>
       <SimpleForm>
         <DateTimeInput label="Description" source="description" disabled />
+        <DateTimeInput label="Due Date" source="dueDate" />
         <TextInput label="Name" multiline source="name" />
         <ReferenceInput source="user.id" reference="User" label="Owner">
           <SelectInput optionText={UserTitle} />
