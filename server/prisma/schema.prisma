@@ -23,6 +23,7 @@ model User {
 model Project {
   createdAt   DateTime  @default(now())
   description DateTime? @default(now())
+  dueDate     DateTime?
   id          String    @id @default(cuid())
   name        String?
   owner       User      @relation(fields: [ownerId], references: [id])

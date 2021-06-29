@@ -5,6 +5,7 @@ import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
 export type ProjectWhereInput = {
   description?: DateTimeNullableFilter;
+  dueDate?: DateTimeNullableFilter;
   id?: StringFilter;
   name?: StringNullableFilter;
   owner?: UserWhereUniqueInput;
