@@ -5,6 +5,7 @@ export type ProjectOrderByInput = {
   description?: SortOrder;
   dueDate?: SortOrder;
   id?: SortOrder;
+  locationId?: SortOrder;
   name?: SortOrder;
   ownerId?: SortOrder;
   startDate?: SortOrder;

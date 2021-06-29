@@ -5,11 +5,12 @@ import {
   SimpleForm,
   EditProps,
   DateTimeInput,
-  TextInput,
   ReferenceInput,
   SelectInput,
+  TextInput,
 } from "react-admin";
 
+import { LocationTitle } from "../location/LocationTitle";
 import { UserTitle } from "../user/UserTitle";
 
 export const ProjectEdit = (props: EditProps): React.ReactElement => {
@@ -18,6 +19,13 @@ export const ProjectEdit = (props: EditProps): React.ReactElement => {
       <SimpleForm>
         <DateTimeInput label="Description" source="description" disabled />
         <DateTimeInput label="Due Date" source="dueDate" />
+        <ReferenceInput
+          source="location.id"
+          reference="Location"
+          label="Location"
+        >
+          <SelectInput optionText={LocationTitle} />
+        </ReferenceInput>
         <TextInput label="Name" multiline source="name" />
         <ReferenceInput source="user.id" reference="User" label="Owner">
           <SelectInput optionText={UserTitle} />

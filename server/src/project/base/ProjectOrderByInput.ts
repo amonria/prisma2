@@ -50,6 +50,15 @@ class ProjectOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
+  locationId?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["Asc", "Desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
   name?: SortOrder;
 
   @ApiProperty({

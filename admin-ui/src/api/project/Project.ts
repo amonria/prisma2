@@ -1,3 +1,4 @@
+import { Location } from "../location/Location";
 import { User } from "../user/User";
 import { Task } from "../task/Task";
 
@@ -6,6 +7,7 @@ export type Project = {
   description: Date | null;
   dueDate: Date | null;
   id: string;
+  location?: Location | null;
   name: string | null;
   owner?: User;
   startDate: Date | null;

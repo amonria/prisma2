@@ -2,6 +2,7 @@ import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { IsDate, IsOptional, IsString, ValidateNested } from "class-validator";
 import { Type } from "class-transformer";
+import { Location } from "../../location/base/Location";
 import { User } from "../../user/base/User";
 import { Task } from "../../task/base/Task";
 @ObjectType()
@@ -43,6 +44,15 @@ class Project {
   @IsString()
   @Field(() => String)
   id!: string;
+
+  @ApiProperty({
+    required: false,
+    type: () => Location,
+  })
+  @ValidateNested()
+  @Type(() => Location)
+  @IsOptional()
+  location?: Location | null;
 
   @ApiProperty({
     required: false,

@@ -13,6 +13,7 @@ import {
 
 import { PROJECT_TITLE_FIELD } from "./ProjectTitle";
 import { USER_TITLE_FIELD } from "../user/UserTitle";
+import { LOCATION_TITLE_FIELD } from "../location/LocationTitle";
 
 export const ProjectShow = (props: ShowProps): React.ReactElement => {
   return (
@@ -22,6 +23,13 @@ export const ProjectShow = (props: ShowProps): React.ReactElement => {
         <DateField source="description" label="Description" />
         <TextField label="Due Date" source="dueDate" />
         <TextField label="ID" source="id" />
+        <ReferenceField
+          label="Location"
+          source="location.id"
+          reference="Location"
+        >
+          <TextField source={LOCATION_TITLE_FIELD} />
+        </ReferenceField>
         <TextField label="Name" source="name" />
         <ReferenceField label="Owner" source="user.id" reference="User">
           <TextField source={USER_TITLE_FIELD} />
