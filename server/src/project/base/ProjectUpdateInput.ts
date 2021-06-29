@@ -1,7 +1,8 @@
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDate, IsOptional, IsString, ValidateNested } from "class-validator";
+import { IsDate, IsOptional, ValidateNested, IsString } from "class-validator";
 import { Type } from "class-transformer";
+import { LocationWhereUniqueInput } from "../../location/base/LocationWhereUniqueInput";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 @InputType()
 class ProjectUpdateInput {
@@ -26,6 +27,18 @@ class ProjectUpdateInput {
     nullable: true,
   })
   dueDate?: Date | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => LocationWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => LocationWhereUniqueInput)
+  @IsOptional()
+  @Field(() => LocationWhereUniqueInput, {
+    nullable: true,
+  })
+  location?: LocationWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,

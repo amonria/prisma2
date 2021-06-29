@@ -25,6 +25,8 @@ model Project {
   description DateTime? @default(now())
   dueDate     DateTime?
   id          String    @id @default(cuid())
+  location    Location? @relation(fields: [locationId], references: [id])
+  locationId  String?
   name        String?
   owner       User      @relation(fields: [ownerId], references: [id])
   ownerId     String
@@ -43,4 +45,11 @@ model Task {
   updatedAt  DateTime @updatedAt
   user       User?    @relation(fields: [userId], references: [id])
   userId     String?
+}
+
+model Location {
+  createdAt DateTime  @default(now())
+  id        String    @id @default(cuid())
+  projects  Project[]
+  updatedAt DateTime  @updatedAt
 }

@@ -16,6 +16,7 @@ import { ProjectFindUniqueArgs } from "./ProjectFindUniqueArgs";
 import { Project } from "./Project";
 import { TaskFindManyArgs } from "../../task/base/TaskFindManyArgs";
 import { Task } from "../../task/base/Task";
+import { Location } from "../../location/base/Location";
 import { User } from "../../user/base/User";
 import { ProjectService } from "../project.service";
 
@@ -126,6 +127,12 @@ export class ProjectResolverBase {
       data: {
         ...args.data,
 
+        location: args.data.location
+          ? {
+              connect: args.data.location,
+            }
+          : undefined,
+
         owner: {
           connect: args.data.owner,
         },
@@ -170,6 +177,12 @@ export class ProjectResolverBase {
         ...args,
         data: {
           ...args.data,
+
+          location: args.data.location
+            ? {
+                connect: args.data.location,
+              }
+            : undefined,
 
           owner: {
             connect: args.data.owner,
@@ -232,6 +245,30 @@ export class ProjectResolverBase {
     }
 
     return results.map((result) => permission.filter(result));
+  }
+
+  @graphql.ResolveField(() => Location, { nullable: true })
+  @nestAccessControl.UseRoles({
+    resource: "Project",
+    action: "read",
+    possession: "any",
+  })
+  async location(
+    @graphql.Parent() parent: Project,
+    @gqlUserRoles.UserRoles() userRoles: string[]
+  ): Promise<Location | null> {
+    const permission = this.rolesBuilder.permission({
+      role: userRoles,
+      action: "read",
+      possession: "any",
+      resource: "Location",
+    });
+    const result = await this.service.getLocation(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return permission.filter(result);
   }
 
   @graphql.ResolveField(() => User, { nullable: true })

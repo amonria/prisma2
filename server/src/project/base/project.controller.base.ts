@@ -60,6 +60,12 @@ export class ProjectControllerBase {
       data: {
         ...data,
 
+        location: data.location
+          ? {
+              connect: data.location,
+            }
+          : undefined,
+
         owner: {
           connect: data.owner,
         },
@@ -69,6 +75,13 @@ export class ProjectControllerBase {
         description: true,
         dueDate: true,
         id: true,
+
+        location: {
+          select: {
+            id: true,
+          },
+        },
+
         name: true,
 
         owner: {
@@ -117,6 +130,13 @@ export class ProjectControllerBase {
         description: true,
         dueDate: true,
         id: true,
+
+        location: {
+          select: {
+            id: true,
+          },
+        },
+
         name: true,
 
         owner: {
@@ -160,6 +180,13 @@ export class ProjectControllerBase {
         description: true,
         dueDate: true,
         id: true,
+
+        location: {
+          select: {
+            id: true,
+          },
+        },
+
         name: true,
 
         owner: {
@@ -221,6 +248,12 @@ export class ProjectControllerBase {
         data: {
           ...data,
 
+          location: data.location
+            ? {
+                connect: data.location,
+              }
+            : undefined,
+
           owner: {
             connect: data.owner,
           },
@@ -230,6 +263,13 @@ export class ProjectControllerBase {
           description: true,
           dueDate: true,
           id: true,
+
+          location: {
+            select: {
+              id: true,
+            },
+          },
+
           name: true,
 
           owner: {
@@ -274,6 +314,13 @@ export class ProjectControllerBase {
           description: true,
           dueDate: true,
           id: true,
+
+          location: {
+            select: {
+              id: true,
+            },
+          },
+
           name: true,
 
           owner: {
